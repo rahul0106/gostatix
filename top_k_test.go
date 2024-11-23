@@ -83,8 +83,8 @@ func TestTopKBasic(t *testing.T) {
 	}
 
 	for i := range val1 {
-		if val1[i].count != uint64(frequencyMap[val1[i].element]) {
-			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val1[i].element, val1[i].count, frequencyMap[val1[i].element])
+		if val1[i].Count != uint64(frequencyMap[val1[i].Element]) {
+			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val1[i].Element, val1[i].Count, frequencyMap[val1[i].Element])
 		}
 	}
 }
@@ -104,11 +104,11 @@ func TestTopKDifferentKs(t *testing.T) {
 	val := topk.Values()
 
 	for i := range expectedTopElements {
-		if strings.Compare(expectedTopElements[i], val[i].element) != 0 {
+		if strings.Compare(expectedTopElements[i], val[i].Element) != 0 {
 			t.Errorf("values at position %d don't match", i)
 		}
-		if val[i].count != uint64(frequencyMap[val[i].element]) {
-			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val[i].element, val[i].count, frequencyMap[val[i].element])
+		if val[i].Count != uint64(frequencyMap[val[i].Element]) {
+			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val[i].Element, val[i].Count, frequencyMap[val[i].Element])
 		}
 	}
 
@@ -120,11 +120,11 @@ func TestTopKDifferentKs(t *testing.T) {
 	val = topk.Values()
 
 	for i := 0; i < 3; i++ {
-		if strings.Compare(expectedTopElements[i], val[i].element) != 0 {
+		if strings.Compare(expectedTopElements[i], val[i].Element) != 0 {
 			t.Errorf("values at position %d don't match", i)
 		}
-		if val[i].count != uint64(frequencyMap[val[i].element]) {
-			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val[i].element, val[i].count, frequencyMap[val[i].element])
+		if val[i].Count != uint64(frequencyMap[val[i].Element]) {
+			t.Errorf("frequency doesn't match for %s. Instead found %d and %d", val[i].Element, val[i].Count, frequencyMap[val[i].Element])
 		}
 	}
 }
