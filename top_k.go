@@ -75,8 +75,8 @@ type TopK struct {
 
 // TopKElement is the struct used to return the results of the TopK
 type TopKElement struct {
-	element string
-	count   uint64
+	Element string
+	Count   uint64
 }
 
 // NewTopK creates new TopK
@@ -119,8 +119,8 @@ func (t *TopK) Values() []TopKElement {
 		results = append(results, TopKElement{t.heap[i].value, t.heap[i].frequency})
 	}
 	sort.Slice(results, func(i, j int) bool {
-		if results[i].count == results[j].count {
-			c := strings.Compare(results[i].element, results[j].element)
+		if results[i].Count == results[j].Count {
+			c := strings.Compare(results[i].Element, results[j].Element)
 			if c == -1 {
 				return true
 			}
@@ -128,7 +128,7 @@ func (t *TopK) Values() []TopKElement {
 				return false
 			}
 		}
-		return results[i].count > results[j].count
+		return results[i].Count > results[j].Count
 	})
 	return results
 }

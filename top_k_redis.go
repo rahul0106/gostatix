@@ -138,8 +138,8 @@ func (t *TopKRedis) Values() ([]TopKElement, error) {
 		results = append(results, TopKElement{elements[i].Member.(string), uint64(elements[i].Score)})
 	}
 	sort.Slice(results, func(i, j int) bool {
-		if results[i].count == results[j].count {
-			c := strings.Compare(results[i].element, results[j].element)
+		if results[i].Count == results[j].Count {
+			c := strings.Compare(results[i].Element, results[j].Element)
 			if c == -1 {
 				return true
 			}
@@ -147,7 +147,7 @@ func (t *TopKRedis) Values() ([]TopKElement, error) {
 				return false
 			}
 		}
-		return results[i].count > results[j].count
+		return results[i].Count > results[j].Count
 	})
 	return results, nil
 }
